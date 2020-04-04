@@ -59,9 +59,9 @@ include("data_watch.php");
 			<tr>
 				<th>Valleur</th>
 				<th>Moyenne</th>
-				<th>Femme*</th>
-				<th>Autre*</th>
-				<th>Homme*</th>
+				<th>Femme Cisgenre</th>
+				<th>Trans / Non-binaire</th>
+				<th>Homme Cisgenre</th>
 			</tr>
 			
 		<!-- Temps parlé par genre -->
@@ -81,7 +81,7 @@ include("data_watch.php");
 				</td>
 				<td>
 					<?php
-					$tppg_a = add_all_data_where_dataname_is_value("temps_parlé", "genre", "A", $data_watch_result);
+					$tppg_a = add_all_data_where_dataname_is_value("temps_parlé", "genre", "T", $data_watch_result);
 					echo (int)$tppg_a . "[s]</br>" . (int)($tppg_a * 100 / $temps_parlé_total) ."[%]";
 					?>
 				</td>
@@ -112,7 +112,7 @@ include("data_watch.php");
 				<td>
 					<?php
 					$tot_personne_a = count_data_with_value(
-					"genre", "A", $data_watch_result);
+					"genre", "T", $data_watch_result);
 					$tpmpg_a = ($tppg_a / $tot_personne_a);
 					echo (int)$tpmpg_a  . "[s]</br>" . (int)($tpmpg_a * 100 / $temps_parlé_total) ."[%]";
 					?>
@@ -148,9 +148,9 @@ include("data_watch.php");
 				<td>
 					<?php
 					$nint_c_a = add_all_data_where_dataname_is_value("parole_courte",
-					"genre", "A", $data_watch_result);
+					"genre", "T", $data_watch_result);
 					$nint_l_a = add_all_data_where_dataname_is_value("parole_longue",
-					"genre", "A", $data_watch_result);
+					"genre", "T", $data_watch_result);
 					$nint_a = $nint_c_a + $nint_l_a;
 					echo (int)$nint_a . "</br>" . (int)($nint_a * 100 / $nbr_interventions) ."[%]";
 					?>

@@ -68,7 +68,6 @@ AND $_POST["new_watch_description"] != "" ){
 	} catch (Exception $e) {
 		go_back($_POST["new_watch_name"], $_POST["new_watch_description"]);
 	}
-	}
 	
 } else {
 	go_back($_POST["new_watch_name"], $_POST["new_watch_description"]);

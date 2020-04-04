@@ -33,7 +33,7 @@ function go_back ($new_personne_name , $new_personne_gender){
 if ( isset( $_POST["new_personne_name"] )
 AND isset( $_POST["new_personne_gender"] )
 AND $_POST["new_personne_name"] != ""
-AND in_array($_POST["new_personne_gender"] , array("F", "A", "H") ) ){
+AND in_array($_POST["new_personne_gender"] , array("F", "T", "H") ) ){
 	
 	$new_personne_name = htmlspecialchars((string)$_POST["new_personne_name"]);
 	$new_personne_gender = htmlspecialchars((string)$_POST["new_personne_gender"]);
