@@ -45,8 +45,14 @@ $dataadd, $dataname, $value, $data_watch_result){
 	return $nbr;
 }
 
-// -------------------Fonctions de comptage --------------------
-//Combien de personnes au total
+// -------------------Fonctions de max --------------------
+function max_of_list_list ($array, $param){
+	$list = array();
+	foreach ( $array as $a ){
+		$list[] = $a[$param];
+	}
+	return max( $list );
+}
 
 
 

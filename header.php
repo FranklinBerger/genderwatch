@@ -10,14 +10,8 @@ Actions:
 À ne pas utiliser pour page hors fonctionalité
 ---------------------------------------------*/
 
-// Ouverture DB
-try{
-	$database = new PDO(
-	"mysql:host=localhost;dbname=gender_watch;charset=utf8", "root", "",
-	array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-} catch (Exception $e) {
-	die("Error à l'ouverture de la DB : " . $e->getMessage());
-}
+//Ouverture db
+include("db.php");
 
 // Ouverture session et vérification session validée
 session_start();
@@ -48,5 +42,5 @@ include("html_module.php");
 <head>
 	<link rel="icon" href="icone.png" />
 	<title>GW - <?php echo $user_data["user"] ?></title>
-	<link rel="stylesheet" href="css.css"/>
+	<link rel="stylesheet" href="graphic/css.css" />
 </head>

@@ -18,30 +18,10 @@ include("data_watch.php");
 	
 	<!-- Tableau des personnes -->
 	<?php
-		// Extrais toutes les personnes du watch et met dans $data_watch_result
-		$prep_all_personnes = $database->prepare("
-		SELECT * FROM personnes_watch WHERE watch = ? ORDER BY nom");
-		$prep_all_personnes->execute( array( (int)$watch_data["id"] ));
 		
-		while ( $personne = $prep_all_personnes->fetch() ){
-			$data_watch_result[] = $personne;
-		}
-		$_SESSION["data_watch_result"] = $data_watch_result;
-		
-		//Outils de calcul automatique
-		include("watch_result_tool.php");
 		
 		
 		// Affichage temps parlé total
-		$nombre_total_personnes = count_data_with_value(
-		"watch", $_SESSION["current_watch"], $data_watch_result);
-		$temps_parlé_total = add_all_data_where_dataname_is_value("temps_parlé",
-		"watch", $_SESSION["current_watch"], $data_watch_result);
-		$nbr_interventions_courte = add_all_data_where_dataname_is_value("parole_courte",
-		"watch", $_SESSION["current_watch"], $data_watch_result);
-		$nbr_interventions_longue = add_all_data_where_dataname_is_value("parole_longue",
-		"watch", $_SESSION["current_watch"], $data_watch_result);
-		$nbr_interventions = $nbr_interventions_courte + $nbr_interventions_longue;
 		echo "<h3>Temps Parlé total:</br>";
 		echo $temps_parlé_total . " secondes ou</br>";
 		echo (int)($temps_parlé_total / 60) ." minutes ";
@@ -300,15 +280,37 @@ include("data_watch.php");
 					?>
 				</td>
 			</tr>
-			
-		<?php
+		</table>
 		
 		
 		
 		
-	?>
-	
-	
+		
+		
+		
+		
+		
+		
+		
+		<!-- ---------------------Graphiques------------- -->
+		</br>
+		
+		<a href = "./watch_graph/watch_result_graph_data_personne.php">
+			<img src = "./watch_graph/watch_result_graph_data_personne.php"
+			class = "img_graph_final" />
+		</a>
+		
+		
+		<!--
+		<a href = "./watch_graph/watch_result_graph_brut.php">
+			<img src = "./watch_graph/watch_result_graph_brut.php"
+			class = "img_graph_final" />
+		</a>
+		-->
+		
+		
+		
+		
 <?php
 include("footer.php");
 ?>

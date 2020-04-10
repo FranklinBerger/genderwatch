@@ -12,7 +12,13 @@ Fait les modifications en cas de post aussi
 À executer après header.php
 ---------------------------------------------*/
 
-//Vérifie le post
+include("db.php");
+include("watch_result_tool.php");
+
+# Démare la session si c'est pas fait
+if ( ! isset( $_SESSION ) ){ session_start(); }
+
+//Entrée dans le watch par post
 if ( isset($_POST["watch_id"]) ){
 	$watch_id = (int) $_POST["watch_id"];
 }
@@ -24,7 +30,7 @@ if ( isset($watch_id) ){
 // Si aucun watch dans la session, renvoi à la liste
 } elseif ( !(isset($_SESSION["current_watch"]))
   OR ($_SESSION["current_watch"] == NULL) ){
-	header("Location:liste_watch.php");
+	header("Location:list_watch.php");
 }
 // watch_id présent dans la session
 
@@ -41,5 +47,32 @@ FROM watch WHERE id = ?");
 $prep_data_watch_info->execute( array( $_SESSION["current_watch"] ) );
 $watch_data = $prep_data_watch_info->fetch();
 $prep_data_watch_info->closeCursor();
+
+// Extrais toutes les personnes du watch et met dans $data_watch_result
+$prep_all_personnes = $database->prepare("
+SELECT * FROM personnes_watch WHERE watch = ? ORDER BY nom");
+$prep_all_personnes->execute( array( (int)$watch_data["id"] ));
+
+$data_watch_result = array();
+while ( $personne = $prep_all_personnes->fetch() ){
+	$data_watch_result[] = $personne;
+}
+$_SESSION["data_watch_result"] = $data_watch_result;
+
+
+// Claucl de divers autres infos
+if ( isset( $_SESSION["data_watch_result"] ) ){
+	$data_watch_result = $_SESSION["data_watch_result"];
+	$nombre_total_personnes = count_data_with_value(
+	"watch", $_SESSION["current_watch"], $data_watch_result);
+	$temps_parlé_total = add_all_data_where_dataname_is_value("temps_parlé",
+	"watch", $_SESSION["current_watch"], $data_watch_result);
+	$nbr_interventions_courte = add_all_data_where_dataname_is_value("parole_courte",
+	"watch", $_SESSION["current_watch"], $data_watch_result);
+	$nbr_interventions_longue = add_all_data_where_dataname_is_value("parole_longue",
+	"watch", $_SESSION["current_watch"], $data_watch_result);
+	$nbr_interventions = $nbr_interventions_courte + $nbr_interventions_longue;
+}
+
 
 ?>

@@ -22,15 +22,15 @@ if ( isset( $_COOKIE["GW_user"] ) AND isset( $_COOKIE["GW_password"] ) ){
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="icon" href="icone.png" />
+	<link rel="icon" href="graphic/icone.png" />
 	<title>GenderWatch</title>
-	<link rel="stylesheet" href="css.css"/>
+	<link rel="stylesheet" href="graphic/css.css"/>
 </head>
 <body>
 	
 	<h1>Gender Watch</br>Protocole</h1>
 	
-	<image src = "logo.png" align="middle" class = "logo_index">
+	<image src = "graphic/logo.png" align="middle" class = "logo_index">
 	
 	</br>
 	</br>
