@@ -72,6 +72,17 @@ if ( isset( $_SESSION["data_watch_result"] ) ){
 	$nbr_interventions_longue = add_all_data_where_dataname_is_value("parole_longue",
 	"watch", $_SESSION["current_watch"], $data_watch_result);
 	$nbr_interventions = $nbr_interventions_courte + $nbr_interventions_longue;
+	
+	// Si nbr personne = 0, nbr personne = 1
+	$tot_personne_f = count_data_with_value(
+	"genre", "F", $data_watch_result);
+	$tot_personne_f = $tot_personne_f ? $tot_personne_f : 1;
+	$tot_personne_a = count_data_with_value(
+	"genre", "T", $data_watch_result);
+	$tot_personne_a = $tot_personne_a ? $tot_personne_a : 1;
+	$tot_personne_h = count_data_with_value(
+	"genre", "H", $data_watch_result);
+	$tot_personne_h = $tot_personne_h ? $tot_personne_h : 1;
 }
 
 

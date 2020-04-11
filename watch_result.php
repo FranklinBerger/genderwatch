@@ -19,8 +19,6 @@ include("data_watch.php");
 	<!-- Tableau des personnes -->
 	<?php
 		
-		
-		
 		// Affichage temps parlé total
 		echo "<h3>Temps Parlé total:</br>";
 		echo $temps_parlé_total . " secondes ou</br>";
@@ -35,7 +33,7 @@ include("data_watch.php");
 		// Affichage tableau complet
 		?>
 		</br>
-		<table>
+		<table style = "margin-bottom: 2.5%;">
 			<tr>
 				<th>Valleur</th>
 				<th>Moyenne</th>
@@ -45,7 +43,7 @@ include("data_watch.php");
 			</tr>
 			
 		<!-- Temps parlé par genre -->
-			<tr>
+			<tr onclick="window.open('watch_graph/watch_result_graph_data_personne.php?max=tp', '_blank');">
 				<td><b>Temps total parlé</b></td>
 				<td>
 					<?php
@@ -73,7 +71,7 @@ include("data_watch.php");
 				</td>
 			</tr>
 		<!-- Temps moyen parlé par personnes et par genre -->
-			<tr>
+			<tr onclick="window.open('watch_graph/watch_result_graph_gender_pp.php?max=tp', '_blank');">
 				<td><b>Temps moyen parlé par personnes</b></td>
 				<td>
 					<?php
@@ -83,31 +81,25 @@ include("data_watch.php");
 				</td>
 				<td>
 					<?php
-					$tot_personne_f = count_data_with_value(
-					"genre", "F", $data_watch_result);
 					$tpmpg_f = ($tppg_f / $tot_personne_f);
 					echo (int)$tpmpg_f  . "[s]</br>" . (int)($tpmpg_f * 100 / $temps_parlé_total) ."[%]";
 					?>
 				</td>
 				<td>
 					<?php
-					$tot_personne_a = count_data_with_value(
-					"genre", "T", $data_watch_result);
 					$tpmpg_a = ($tppg_a / $tot_personne_a);
 					echo (int)$tpmpg_a  . "[s]</br>" . (int)($tpmpg_a * 100 / $temps_parlé_total) ."[%]";
 					?>
 				</td>
 				<td>
 					<?php
-					$tot_personne_h = count_data_with_value(
-					"genre", "H", $data_watch_result);
 					$tpmpg_h = ($tppg_h / $tot_personne_h);
 					echo (int)$tpmpg_h  . "[s]</br>" . (int)($tpmpg_h * 100 / $temps_parlé_total) ."[%]";
 					?>
 				</td>
 			</tr>
 		<!-- Nombres d'interventions -->
-			<tr>
+			<tr onclick="window.open('watch_graph/watch_result_graph_data_personne.php?max=pcpl', '_blank');">
 				<td><b>Nombres d'interventions</b></td>
 				<td>
 					<?php
@@ -147,7 +139,7 @@ include("data_watch.php");
 				</td>
 			</tr>
 		<!-- Nombres d'interventions courte -->
-			<tr>
+			<tr onclick="window.open('watch_graph/watch_result_graph_data_personne.php?max=pc', '_blank');">
 				<td><b>● Courte</b></td>
 				<td>
 					<?php
@@ -172,12 +164,12 @@ include("data_watch.php");
 				</td>
 			</tr>
 		<!-- Nombres d'interventions longue -->
-			<tr>
+			<tr onclick="window.open('watch_graph/watch_result_graph_data_personne.php?max=pl', '_blank');">
 				<td><b>● Longue</b></td>
 				<td>
 					<?php
 					$nintl = ($nbr_interventions_longue / 3);
-					echo (int)$nintl . "</br>" . (int)($nintl * 100 / $nbr_interventions_courte) ."[%]";
+					echo (int)$nintl . "</br>" . (int)($nintl * 100 / $nbr_interventions_longue) ."[%]";
 					?>
 				</td>
 				<td>
@@ -197,7 +189,7 @@ include("data_watch.php");
 				</td>
 			</tr>
 		<!-- Nombres d'interventions par personne -->
-			<tr>
+			<tr onclick="window.open('watch_graph/watch_result_graph_gender_pp.php?max=pcpl', '_blank');">
 				<td><b>Nombres d'interventions par personne</b></td>
 				<td>
 					<?php
@@ -225,7 +217,7 @@ include("data_watch.php");
 				</td>
 			</tr>
 		<!-- Nombres d'interventions courte par personne -->
-			<tr>
+			<tr onclick="window.open('watch_graph/watch_result_graph_gender_pp.php?max=pc', '_blank');">
 				<td><b>● Courte</b></td>
 				<td>
 					<?php
@@ -253,7 +245,7 @@ include("data_watch.php");
 				</td>
 			</tr>
 		<!-- Nombres d'interventions longue par personne -->
-			<tr>
+			<tr onclick="window.open('watch_graph/watch_result_graph_gender_pp.php?max=pl', '_blank');">
 				<td><b>● Longue</b></td>
 				<td>
 					<?php
@@ -283,30 +275,18 @@ include("data_watch.php");
 		</table>
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		<!-- ---------------------Graphiques------------- -->
-		</br>
 		
-		<a href = "./watch_graph/watch_result_graph_data_personne.php">
+		<a href = "./watch_graph/watch_result_graph_gender_pp.php" target="_blank">
+			<img src = "./watch_graph/watch_result_graph_gender_pp.php"
+			class = "img_graph_final" />
+		</a>
+		
+		<a href = "./watch_graph/watch_result_graph_data_personne.php" target="_blank">
 			<img src = "./watch_graph/watch_result_graph_data_personne.php"
 			class = "img_graph_final" />
 		</a>
 		
-		
-		<!--
-		<a href = "./watch_graph/watch_result_graph_brut.php">
-			<img src = "./watch_graph/watch_result_graph_brut.php"
-			class = "img_graph_final" />
-		</a>
-		-->
 		
 		
 		

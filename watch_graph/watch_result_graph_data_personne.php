@@ -29,8 +29,8 @@ $max_longueure_barre = $graphX - ($marge_cote * 2) - $larg_bande_nom - ($epp_lig
 $list_pers = $_SESSION["data_watch_result"];
 
 //Calcul de la taille 
-$graphY = $marge_haut + ($nombre_total_personnes * ($haut_ligne + $marge_ligne)) + $marge_bas;
-$dataName = "Temps parlé & Prises de parole";
+$graphY = $marge_haut + ($nombre_total_personnes * ($haut_ligne + $marge_ligne)) - $marge_ligne + $marge_bas;
+$dataName = "Informations Par Personne";
 include("watch_result_graph_brut.php");
 
 // Définition valleurs max
@@ -47,16 +47,46 @@ $y2 = $graphY - $marge_bas;
 imagefilledrectangle($graph, $x1, $y1, $x2, $y2, $noir);
 
 
+//Couleur barre en fonction du paramètre
+if ( isset($_GET["max"]) ){
+	$bckgcol = 220;
+	$fgrdcol = 100;
+	$col_temps_parlé = imagecolorallocate($graph, $bckgcol, $bckgcol, $bckgcol);
+	$col_parole_courte = imagecolorallocate($graph, $bckgcol, $bckgcol, $bckgcol);
+	$col_parole_longue = imagecolorallocate($graph, $bckgcol, $bckgcol, $bckgcol);
+	
+	switch ( $_GET["max"] ){
+		case "tp":
+			$col_temps_parlé = imagecolorallocate($graph, $fgrdcol, $fgrdcol, $fgrdcol);
+			break;
+		case "pc":
+			$col_parole_courte = imagecolorallocate($graph, $fgrdcol, $fgrdcol, $fgrdcol);
+			break;
+		case "pl":
+			$col_parole_longue = imagecolorallocate($graph, $fgrdcol, $fgrdcol, $fgrdcol);
+			break;
+		case "pcpl":
+			$col_parole_courte = imagecolorallocate($graph, $fgrdcol, $fgrdcol, $fgrdcol);
+			$col_parole_longue = imagecolorallocate($graph, $fgrdcol+50, $fgrdcol+50, $fgrdcol+50);
+			break;
+		default:
+			break;
+	}
+} else {
+	$col_temps_parlé = imagecolorallocate($graph, 100, 100, 100);
+	$col_parole_courte = imagecolorallocate($graph, 150, 150, 150);
+	$col_parole_longue = imagecolorallocate($graph, 200, 200, 200);
+}
+
+
+
 //Valleur pour chaque personne
-$col_temps_parlé = imagecolorallocate($graph, 100, 100, 100);
-$col_parole_courte = imagecolorallocate($graph, 150, 150, 150);
-$col_parole_longue = imagecolorallocate($graph, 200, 200, 200);
 $y = $marge_haut;
 $x = $marge_cote;
 foreach ( $list_pers as $pers ){
 	//Ecrit le nom
 	$dyC = $x + ($haut_ligne / 2) - ($taille_char_nom / 2);
-	imagettftext($graph, $taille_char_nom, 0, $x, $y + $dyC, $noir, $font, $pers["nom"] );
+	imagettftext($graph, $taille_char_nom, 0, $x, $y + $dyC, $noir, $font, substr($pers["nom"], 0, 14) );
 	
 	// Barre Temps parlé
 	$x1 = $x + $larg_bande_nom + ($epp_ligne_nom + 1);
@@ -94,7 +124,7 @@ foreach ( $list_pers as $pers ){
 
 
 //-------------------------------------- Explication -------------------------------
-$larg_rec = 300;
+$larg_rec = 450;
 $haut_rec = 30;
 $pad_txt = 10;
 $x_start = $graphX - $marge_cote - $larg_rec;

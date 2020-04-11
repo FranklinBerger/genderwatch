@@ -9,7 +9,9 @@ Besoin d'avoir les données dans la dession sous data_watch_result
 if ( session_status() == PHP_SESSION_DISABLED ){
 	session_start();
 }
-$data_watch_result = $_SESSION["data_watch_result"];
+if ( isset($_SESSION["data_watch_result"]) ){
+	$data_watch_result = $_SESSION["data_watch_result"];
+}
 
 // ------------------ Fonctions de comptage-----------------------
 //Compte toutes les personnes ayant X à la valleur Y
