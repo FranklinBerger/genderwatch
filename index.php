@@ -16,6 +16,9 @@ if ( isset( $_COOKIE["GW_user"] ) AND isset( $_COOKIE["GW_password"] ) ){
 	NULL;
 }
 
+//Pour le bouton share
+include( "html_module.php" );
+
 ?>
 
 
@@ -52,6 +55,7 @@ if ( isset( $_COOKIE["GW_user"] ) AND isset( $_COOKIE["GW_password"] ) ){
 		</br>
 		<button action = "submit">Valider</button>
 	</form>
+	<?php bouton_lien("Voir un Watch partagé", "share"); ?>
 	
 	
 	

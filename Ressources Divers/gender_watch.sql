@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Client :  localhost:3306
--- Généré le :  Sam 04 Avril 2020 à 19:41
--- Version du serveur :  10.3.22-MariaDB-0+deb10u1
--- Version de PHP :  7.3.14-1~deb10u1
+-- Hôte : 127.0.0.1
+-- Généré le :  ven. 17 avr. 2020 à 21:05
+-- Version du serveur :  10.4.6-MariaDB
+-- Version de PHP :  7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -33,7 +35,7 @@ CREATE TABLE `authorized_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `authorized_user`
+-- Déchargement des données de la table `authorized_user`
 --
 
 INSERT INTO `authorized_user` (`id`, `user`, `password`) VALUES
@@ -56,9 +58,6 @@ CREATE TABLE `personnes_watch` (
   `parle_depuis` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Contenu de la table `personnes_watch`
---
 
 -- --------------------------------------------------------
 
@@ -72,15 +71,12 @@ CREATE TABLE `watch` (
   `watch_description` text NOT NULL,
   `watch_date` datetime NOT NULL,
   `created_by` int(11) NOT NULL,
-  `user_access` text NOT NULL
+  `user_access` text NOT NULL,
+  `share_key` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `watch`
---
-
---
--- Index pour les tables exportées
+-- Index pour les tables déchargées
 --
 
 --
@@ -102,7 +98,7 @@ ALTER TABLE `watch`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT pour les tables exportées
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
@@ -110,16 +106,20 @@ ALTER TABLE `watch`
 --
 ALTER TABLE `authorized_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT pour la table `personnes_watch`
 --
 ALTER TABLE `personnes_watch`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT pour la table `watch`
 --
 ALTER TABLE `watch`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -29,16 +29,6 @@ body {
 	padding-bottom: auto;
 }
 
-a {
-	color: black;
-	text-decoration: none;
-}
-
-a:hover {
-	color: #4f4f4f;
-	text-decoration: underline;
-}
-
 /* Form, en ligne si rien n'est fait */
 form {
 	display: inline;

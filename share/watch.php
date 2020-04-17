@@ -1,19 +1,15 @@
 <?php
-include("header.php");
 // Extraction info du watch
 include("data_watch.php");
-
+include("header.php");
 ?>
+
 <body>
 	<h2>Résultat: <?php echo $watch_data["name"]; ?></h2>
 	
 	
 	<!-- Boutons menu -->
-	<?php $shareLink = "http://".$_SERVER["HTTP_HOST"]."/share/?w=".$watch_data["share_key"]; ?>
-	<p style="font-size:18px;">Lien de partage: <a href="<?php echo $shareLink;?>"><?php echo $shareLink;?></a></p>
-	<p style="font-size:18px;">Clé de partage: <?php echo $watch_data["share_key"];?></p>
-	<?php bouton_lien("Retour", "watch.php"); ?>
-	<?php bouton_lien("Déconnexion", "loggout.php"); ?>
+	<?php bouton_lien("Retour", "index.php"); ?>
 	</br>
 	
 	</br>

@@ -10,29 +10,54 @@ Renome les valleurs à:
 - user_access
 Fait les modifications en cas de post aussi
 À executer après header.php
+Pour share => à partir de la clé
 ---------------------------------------------*/
 
 include("db.php");
 include("watch_result_tool.php");
 
+// Visualisation du watch invalide
+function go_back (){
+	$get = array(
+	"msg" => "Impossible de visualiser ce watch."
+	);
+	header("Location:index.php?" . http_build_query($get) );
+}
+
 # Démare la session si c'est pas fait
 if ( ! isset( $_SESSION ) ){ session_start(); }
 
-//Entrée dans le watch par post
-if ( isset($_POST["watch_id"]) ){
-	$watch_id = (int) $_POST["watch_id"];
+//Détection du watch à voir
+if ( ! isset( $_SESSION["current_watch"] ) ){
+	if ( isset( $_GET["watch_key"]) ){
+		$watch_key = $_GET["watch_key"];
+		
+		$watch_id = $database->prepare(
+		"SELECT id
+		FROM watch
+		WHERE share_key = ?
+		ORDER BY watch_date
+		");
+		$watch_id->execute( array($watch_key) );
+		
+		if ( $w = $watch_id->fetch() ){
+			$watch_id->closeCursor();
+			$watch_id = $w["id"];
+			$_SESSION["current_watch"] = $watch_id;
+		} else {
+			go_back();
+		}
+		
+	} else {
+		go_back();
+	}
 }
 
-// Session: enregistre le watch actuel si post présent
-if ( isset($watch_id) ){
-	$_SESSION["current_watch"] = $watch_id;
-	
-// Si aucun watch dans la session, renvoi à la liste
-} elseif ( !(isset($_SESSION["current_watch"]))
-  OR ($_SESSION["current_watch"] == NULL) ){
-	header("Location:list_watch.php");
-}
-// watch_id présent dans la session
+
+
+
+
+
 
 //Extrait les infos
 $prep_data_watch_info = $database->prepare(
@@ -42,8 +67,7 @@ watch_name AS name,
 watch_description AS description,
 DATE_FORMAT(watch_date, '%d/%m/%Y %H:%i') AS date,
 created_by,
-user_access,
-share_key
+user_access
 FROM watch WHERE id = ?");
 $prep_data_watch_info->execute( array( $_SESSION["current_watch"] ) );
 $watch_data = $prep_data_watch_info->fetch();
