@@ -15,7 +15,7 @@ include("data_watch.php");
 	<?php bouton_lien("Déconnexion", "loggout.php"); ?>
 	<?php bouton_lien("Nouvelle personne", "new_personne.php");?>
 	<?php bouton_lien("Fin Édition", "watch.php");?>
-	<?php bouton_lien("Voir résultats", "watch_result.php");?>
+	<?php bouton_lien("Partager", "watch_share.php");?>
 	
 	</br>
 	<?php

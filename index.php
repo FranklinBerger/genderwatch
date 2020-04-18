@@ -38,7 +38,13 @@ include( "html_module.php" );
 	</br>
 	</br>
 	</br>
-	</br>
+	<?php
+	if ( isset( $_GET["msg"] ) ){
+		echo "<p>".$_GET["msg"]."</p>";
+	} else {
+		echo "</br>";
+	}
+	?>
 	
 	<form action = "loggin.php" method = "post" class = "singin_index_input">
 		<label for = "index_input_user">Nom d'utilisat·eur·rice : </label>

@@ -94,7 +94,7 @@ if ( is_user_alowed($database, $post_user, $post_password) ){
 } else {
 	
 	//Non, on le renvoie à la page de loggin
-	header("Location:index.php");
+	header("Location:index.php?msg=Nom d'utilisat·eur·rice et/ou mot de passe invalide");
 	
 }
 

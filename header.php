@@ -40,7 +40,7 @@ include("html_module.php");
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="icon" href="icone.png" />
+	<link rel="icon" href="graphic/icone.png" />
 	<title>GW - <?php echo $user_data["user"] ?></title>
 	<link rel="stylesheet" href="graphic/css.css" />
 </head>
