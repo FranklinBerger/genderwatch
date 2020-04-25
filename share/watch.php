@@ -1,25 +1,22 @@
 <?php
-include("header.php");
 // Extraction info du watch
 include("data_watch.php");
-
+include("header.php");
 ?>
+
 <body>
 	<h2>Résultat: <?php echo $watch_data["name"]; ?></h2>
 	
 	
 	<!-- Boutons menu -->
-	<?php $shareLink = "http://".$_SERVER["HTTP_HOST"]."/share/?w=".$watch_data["share_key"]; ?>
-	<p style="font-size:18px;">Lien de partage: <a href="<?php echo $shareLink;?>"><?php echo $shareLink;?></a></p>
-	<p style="font-size:18px;">Clé de partage: <?php echo $watch_data["share_key"];?></p>
-	<?php bouton_lien("Retour", "watch.php"); ?>
-	<?php bouton_lien("Déconnexion", "loggout.php"); ?>
+	<?php bouton_lien("Retour", "index.php"); ?>
 	</br>
 	
 	</br>
 	
 	<!-- Tableau des personnes -->
 	<?php
+		
 		
 		// Affichage temps parlé total
 		echo "<h3>Temps Parlé total:</br>";
@@ -33,7 +30,52 @@ include("data_watch.php");
 		echo (int)($nbr_interventions_longue * 100 / $nbr_interventions) . "[%]</br></h3>";
 		
 		// Affichage tableau complet
+		// Extrais toutes les personnes du watch
+		$prep_all_personnes = $database->prepare("
+		SELECT * FROM personnes_watch WHERE watch = ? ORDER BY nom");
+		$prep_all_personnes->execute( array( (int)$watch_data["id"] ));
+		
+		// Affiche
 		?>
+		
+		<table>
+			<tr>
+			<th>Nom</th>
+			<th>Temps parlé</th>
+			<th>Prise de parolle longue</th>
+			<th>Prise de parolle courte</th>
+			<th>Genre</th>
+			</tr>
+		<?php
+		while ( $personne = $prep_all_personnes->fetch() ){
+			if ( $personne["parle_depuis"] == 0 ){
+				// Pas en intervention => bouton gris etc...
+				$bouton_interv = "<button action = 'submit' >
+				Démarrer</button>";
+			} else {
+				// En intervention => bouton vert etc...
+				$bouton_interv = "<button action = 'submit'
+				style = 'background-color: #7cb179;'>
+				Arrêter</button>";
+			}
+			?>
+			<tr>
+			<td><?php echo $personne["nom"]; ?></td>
+			<td><?php echo $personne["temps_parlé"]; ?></td>
+			<td><?php echo $personne["parole_longue"]; ?></td>
+			<td><?php echo $personne["parole_courte"]; ?></td>
+			<td><?php echo $personne["genre"]; ?></td>
+			</tr>
+			<?php
+		}
+		echo "</table>";
+		$prep_all_personnes->closeCursor();
+		?>
+		
+		
+		
+		</br></br>
+		
 		</br>
 		<table style = "margin-bottom: 2.5%;">
 			<tr>

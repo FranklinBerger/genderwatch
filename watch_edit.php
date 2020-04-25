@@ -14,10 +14,17 @@ include("data_watch.php");
 	<?php bouton_lien("Retour", "list_watch.php"); ?>
 	<?php bouton_lien("Déconnexion", "loggout.php"); ?>
 	<?php bouton_lien("Nouvelle personne", "new_personne.php");?>
-	<?php bouton_lien("Éditer", "watch_edit.php");?>
-	<?php bouton_lien("Voir résultats", "watch_result.php");?>
+	<?php bouton_lien("Fin Édition", "watch.php");?>
+	<?php bouton_lien("Partager", "watch_share.php");?>
 	
-	</br></br>
+	</br>
+	<?php
+	//Eventuel message
+	if ( isset($_GET["msg"]) ){
+		echo "<p>". $_GET["msg"] ."</p>";
+	}
+	?>
+	</br>
 	
 	<!-- Tableau des personnes -->
 	<?php
@@ -30,7 +37,7 @@ include("data_watch.php");
 		?>
 		<table>
 			<tr>
-			<th>Intervention</th>
+			<th>Enregistrer</th>
 			<th>Nom</th>
 			<th>Temps parlé</th>
 			<th>Prise de parolle longue</th>
@@ -39,30 +46,29 @@ include("data_watch.php");
 			</tr>
 		<?php
 		while ( $personne = $prep_all_personnes->fetch() ){
-			if ( $personne["parle_depuis"] == 0 ){
-				// Pas en intervention => bouton gris etc...
-				$bouton_interv = "<button action = 'submit' >
-				Démarrer</button>";
-			} else {
-				// En intervention => bouton vert etc...
-				$bouton_interv = "<button action = 'submit'
-				style = 'background-color: #7cb179;'>
-				Arrêter</button>";
-			}
 			?>
 			<tr>
+			<form method = "post" action = "watch_edit_save.php">
 			<td>
-				<form method = "post" action = "act_on_intervention.php">
-					<input type = "hidden" name = "person_id"
-					value = "<?php echo $personne["id"]; ?>" />
-					<?php echo $bouton_interv; ?>
-				</form>
+				<input type = "hidden" name = "person_id"
+				value = "<?php echo $personne["id"]; ?>" />
+				<button action = 'submit' >Enregistrer</button>
 			</td>
-			<td><?php echo $personne["nom"]; ?></td>
+			
+				<td>
+				<input type = "text" name = "nom" value = "<?php echo $personne["nom"]; ?>" style = "width: 100%"/>
+				</td>
 			<td><?php echo $personne["temps_parlé"]; ?></td>
 			<td><?php echo $personne["parole_longue"]; ?></td>
 			<td><?php echo $personne["parole_courte"]; ?></td>
-			<td><?php echo $personne["genre"]; ?></td>
+				<td>
+				<select name = "genre" style = "width: 100%" >
+					<option value="F" <?php echo ($personne["genre"] == "F") ? "selected = 'selected'" : ""; ?>>Femme Cisgenre</option>
+					<option value="T" <?php echo ($personne["genre"] == "T") ? "selected = 'selected'" : ""; ?>>Trans / Non-Binaire</option>
+					<option value="H" <?php echo ($personne["genre"] == "H") ? "selected = 'selected'" : ""; ?>>Homme Cisgenre</option>
+				</select>
+				</td>
+			</form>
 			</tr>
 			<?php
 		}

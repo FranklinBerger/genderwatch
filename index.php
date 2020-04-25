@@ -16,26 +16,35 @@ if ( isset( $_COOKIE["GW_user"] ) AND isset( $_COOKIE["GW_password"] ) ){
 	NULL;
 }
 
+//Pour le bouton share
+include( "html_module.php" );
+
 ?>
 
 
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="icon" href="icone.png" />
+	<link rel="icon" href="graphic/icone.png" />
 	<title>GenderWatch</title>
-	<link rel="stylesheet" href="css.css"/>
+	<link rel="stylesheet" href="graphic/css.css"/>
 </head>
 <body>
 	
 	<h1>Gender Watch</br>Protocole</h1>
 	
-	<image src = "logo.png" align="middle" class = "logo_index">
+	<image src = "graphic/logo.png" align="middle" class = "logo_index">
 	
 	</br>
 	</br>
 	</br>
-	</br>
+	<?php
+	if ( isset( $_GET["msg"] ) ){
+		echo "<p>".$_GET["msg"]."</p>";
+	} else {
+		echo "</br>";
+	}
+	?>
 	
 	<form action = "loggin.php" method = "post" class = "singin_index_input">
 		<label for = "index_input_user">Nom d'utilisat·eur·rice : </label>
@@ -52,6 +61,7 @@ if ( isset( $_COOKIE["GW_user"] ) AND isset( $_COOKIE["GW_password"] ) ){
 		</br>
 		<button action = "submit">Valider</button>
 	</form>
+	<?php bouton_lien("Voir un Watch partagé", "share"); ?>
 	
 	
 	

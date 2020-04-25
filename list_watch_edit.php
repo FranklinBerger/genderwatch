@@ -14,10 +14,17 @@ if ( isset( $_SESSION["current_watch"] ) ){
 	
 	<!-- Boutons menu -->
 	<?php bouton_lien("Nouveau Watch", "new_watch.php");?>
-	<?php bouton_lien("Éditer", "list_watch_edit.php");?>
+	<?php bouton_lien("Fin Édition", "list_watch.php");?>
 	<?php bouton_lien("Déconnexion", "loggout.php");?>
 	
 	</br>
+	<?php
+	//Eventuel message
+	if ( isset($_GET["msg"]) ){
+		echo "<p>". $_GET["msg"] ."</p>";
+	}
+	
+	?>
 	</br>
 	
 	
@@ -32,7 +39,7 @@ if ( isset( $_SESSION["current_watch"] ) ){
 		w.user_access,
 		w.created_by,
 		w.watch_description,
-		DATE_FORMAT(w.watch_date, '%d/%m/%Y %H:%i') AS watch_date,
+		watch_date,
 		au.user AS au_created_by
 	FROM watch as w
 	INNER JOIN authorized_user AS au
@@ -60,19 +67,26 @@ if ( isset( $_SESSION["current_watch"] ) ){
 	// Fetch + affichage
 	while ( $watch = $query_all_watch->fetch() ){?>
 		<tr>
+		<form method = "post" action = "list_watch_edit_save.php">
 		<td>
-			<form method = "post" action = "watch.php">
 				<input type = "hidden" name = "watch_id"
 				value = "<?php echo $watch["watch_id"]; ?>" />
-				<button action = "submit">Accéder</button>
-			</form>
+				<button action = "submit">Enregistrer</button>
 		</td>
-		<td><?php echo $watch["watch_name"]; ?></td>
-		<td><?php echo $watch["watch_description"]; ?></td>
-		<td><?php echo $watch["watch_date"]; ?></td>
+		<td>
+			<input type = "text" name = "name" value = "<?php echo $watch["watch_name"]; ?>" style = "width: 100%" />
+		</td>
+		<td>
+			<textarea name = "description" style = "width: 100%"
+			><?php echo $watch["watch_description"]; ?></textarea>
+		</td>
+		<td>
+		<input type = "text" name = "date" value = "<?php echo $watch["watch_date"]; ?>" style = "width: 100%" />
+		</td>
 		<td><?php echo $watch["au_created_by"]; ?></td>
+		</form>
 		</tr>
-	<?php }?>
+	<?php }	?>
 	</table>
 	
 <?php

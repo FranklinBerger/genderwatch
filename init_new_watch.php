@@ -10,13 +10,7 @@ Initialise un nouveau watch de new_watch.php
 session_start();
 
 // Ouverture DB
-try{
-	$database = new PDO(
-	"mysql:host=localhost;dbname=gender_watch;charset=utf8", "root", "",
-	array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-} catch (Exception $e) {
-	die("Error à l'ouverture de la DB : " . $e->getMessage());
-}
+include("db.php");
 
 // Pour renvoyer avec les infos
 function go_back ($new_watch_name , $new_watch_description){
@@ -26,6 +20,16 @@ function go_back ($new_watch_name , $new_watch_description){
 	"msg" => "Impossible de créer le Watch"
 	);
 	header("Location:new_watch.php?" . http_build_query($get) );
+}
+// Géneration de la clé de share
+function generateRandomString($length = 10) {
+	$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	$charactersLength = strlen($characters);
+	$randomString = '';
+	for ($i = 0; $i < $length; $i++) {
+		$randomString .= $characters[rand(0, $charactersLength - 1)];
+	}
+	return $randomString;
 }
 
 
@@ -52,22 +56,36 @@ AND $_POST["new_watch_description"] != "" ){
 		// Créer l'entrée dans la table watch
 		$add_watch = $database->prepare(
 		"INSERT INTO watch 
-		(watch_name, watch_description, watch_date, created_by, user_access)
+		(watch_name, watch_description, watch_date, created_by, user_access, share_key)
 		VALUES
-		(:watch_name, :watch_description, NOW(), :created_by, :user_access)");
+		(:watch_name, :watch_description, NOW(), :created_by, :user_access, :share_key)");
 		
+		//Génértion clé de partage
+		$checkQ  = $database->prepare("
+		SELECT * FROM watch WHERE share_key = ?
+		");
+		$share_key = generateRandomString();
+		$checkQ->execute(array( $share_key ));
+		while ( $checkQ->fetch() ){
+			$checkQ->closeCursor();
+			$share_key = generateRandomString();
+			$checkQ->execute(array( $share_key ));
+		}
+		$checkQ->closeCursor();
+		
+		// Enregistre dans DB
 		$add_watch->execute(array(
 			"watch_name" => $new_watch_name,
 			"watch_description" => $new_watch_description,
 			"created_by" => $user_data["id"],
-			"user_access" => (string) $user_data["id"].",1,",
+			"user_access" => (string) $user_data["id"].",1," ,
+			"share_key" => $share_key
 			));
 			
 			// Redirection vers le menu principal
 			header("Location:list_watch.php");
 	} catch (Exception $e) {
 		go_back($_POST["new_watch_name"], $_POST["new_watch_description"]);
-	}
 	}
 	
 } else {

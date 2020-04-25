@@ -52,7 +52,7 @@ if ( isset( $_GET["msg"] ) ){
 		
 		<label for = "new_personne_gender">Genre:</label></br>
 		
-		<label class="radiobutton">Femme*
+		<label class="radiobutton">Femme Cisgenre
 			<?php
 			// Femme* déjà coché? (même pour la suite)
 			echo '<input type="radio" name="new_personne_gender" value = "F"';
@@ -63,17 +63,17 @@ if ( isset( $_GET["msg"] ) ){
 			}?>
 			<span class="checkmark"></span>
 		</label>
-		<label class="radiobutton">Autre*
+		<label class="radiobutton">Trans / Non-binaire
 			<?php
-			echo '<input type="radio" name="new_personne_gender" value = "A"';
-			if ( $new_personne_gender == "A" ){
+			echo '<input type="radio" name="new_personne_gender" value = "T"';
+			if ( $new_personne_gender == "T" ){
 				 echo 'checked = "checked">';
 			} else {
 				echo '>';
 			}?>
 			<span class="checkmark"></span>
 		</label>
-		<label class="radiobutton">Homme*
+		<label class="radiobutton">Homme Cisgenre
 			<?php
 			echo '<input type="radio" name="new_personne_gender" value = "H"';
 			if ( $new_personne_gender == "H" ){

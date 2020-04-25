@@ -10,13 +10,7 @@ Initialise une nuvelle personne de new_personne.php
 session_start();
 
 // Ouverture DB
-try{
-	$database = new PDO(
-	"mysql:host=localhost;dbname=gender_watch;charset=utf8", "root", "",
-	array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-} catch (Exception $e) {
-	die("Error à l'ouverture de la DB : " . $e->getMessage());
-}
+include("db.php");
 
 // Pour renvoyer avec les infos
 function go_back ($new_personne_name , $new_personne_gender){
@@ -33,7 +27,7 @@ function go_back ($new_personne_name , $new_personne_gender){
 if ( isset( $_POST["new_personne_name"] )
 AND isset( $_POST["new_personne_gender"] )
 AND $_POST["new_personne_name"] != ""
-AND in_array($_POST["new_personne_gender"] , array("F", "A", "H") ) ){
+AND in_array($_POST["new_personne_gender"] , array("F", "T", "H") ) ){
 	
 	$new_personne_name = htmlspecialchars((string)$_POST["new_personne_name"]);
 	$new_personne_gender = htmlspecialchars((string)$_POST["new_personne_gender"]);
