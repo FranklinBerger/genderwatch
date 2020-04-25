@@ -11,22 +11,14 @@ Actions:
 ---------------------------------------------*/
 
 //Ouverture db
-try{
-	include("../db.php");
-} catch (Exception $e) {
-	include("..\db.php");
-}
+include("db.php");
 
 # Démare la session si c'est pas fait
 if ( ! isset( $_SESSION ) ){ session_start(); }
 
 
 // Divers outils html
-try{
-	include("..\html_module.php");;
-} catch (Exception $e) {
-	include("../html_module.php");;
-}
+include("html_module.php");
 ?>
 
 
