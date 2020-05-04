@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/FranklinBerger/genderwatch/master/logo.png" width="300" align="right">
+<img src="https://raw.githubusercontent.com/FranklinBerger/genderwatch/master/graphic/logo.png" width="300" align="right">
 
 # GenderWatch Protocole
 ## Introduction
