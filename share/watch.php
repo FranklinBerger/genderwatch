@@ -77,6 +77,10 @@ include("header.php");
 		</br></br>
 		
 		</br>
+		
+		
+		<!-- Affichage tableau infos chiffres -->
+		</br>
 		<table style = "margin-bottom: 2.5%;">
 			<tr>
 				<th>Valleur</th>
@@ -92,7 +96,7 @@ include("header.php");
 				<td>
 					<?php
 					$tppg = ($temps_parlé_total / 3);
-					echo (int)$tppg  . "[s]</br>" . (int)($tppg * 100 / $temps_parlé_total) ."[%]";
+					echo (int)$tppg . "[s]</br>" . (int)($tppg * 100 / $temps_parlé_total) ."[%]";
 					?>
 				</td>
 				<td>
@@ -120,25 +124,25 @@ include("header.php");
 				<td>
 					<?php
 					$tpmpg = ($temps_parlé_total / $nombre_total_personnes);
-					echo (int)$tpmpg  . "[s]</br>" . (int)($tpmpg * 100 / $temps_parlé_total) ."[%]";
+					echo (int)$tpmpg  . "[s]</br>" . round(($tpmpg * 100 / $temps_parlé_total), 2) ."[%]";
 					?>
 				</td>
 				<td>
 					<?php
 					$tpmpg_f = ($tppg_f / $tot_personne_f);
-					echo (int)$tpmpg_f  . "[s]</br>" . (int)($tpmpg_f * 100 / $temps_parlé_total) ."[%]";
+					echo (int)$tpmpg_f  . "[s]</br>" . round(($tpmpg_f * 100 / $temps_parlé_total), 2) ."[%]";
 					?>
 				</td>
 				<td>
 					<?php
 					$tpmpg_a = ($tppg_a / $tot_personne_a);
-					echo (int)$tpmpg_a  . "[s]</br>" . (int)($tpmpg_a * 100 / $temps_parlé_total) ."[%]";
+					echo (int)$tpmpg_a  . "[s]</br>" . round(($tpmpg_a * 100 / $temps_parlé_total), 2) ."[%]";
 					?>
 				</td>
 				<td>
 					<?php
 					$tpmpg_h = ($tppg_h / $tot_personne_h);
-					echo (int)$tpmpg_h  . "[s]</br>" . (int)($tpmpg_h * 100 / $temps_parlé_total) ."[%]";
+					echo (int)$tpmpg_h  . "[s]</br>" . round(($tpmpg_h * 100 / $temps_parlé_total), 2) ."[%]";
 					?>
 				</td>
 			</tr>
@@ -238,25 +242,25 @@ include("header.php");
 				<td>
 					<?php
 					$nintp = ($nbr_interventions / $nombre_total_personnes);
-					echo (int)$nintp . "</br>" . (int)($nintp * 100 / $nbr_interventions) ."[%]";
+					echo round($nintp, 2) . "</br>" . round(($nintp * 100 / $nbr_interventions), 2) ."[%]";
 					?>
 				</td>
 				<td>
 					<?php
 					$nintp_f = ($nint_f / $tot_personne_f);
-					echo (int)$nintp_f . "</br>" . (int)($nintp_f * 100 / $nbr_interventions) ."[%]";
+					echo round($nintp_f, 2) . "</br>" . round(($nintp_f * 100 / $nbr_interventions), 2) ."[%]";
 					?>
 				</td>
 				<td>
 					<?php
 					$nintp_a = ($nint_a / $tot_personne_a);
-					echo (int)$nintp_a . "</br>" . (int)($nintp_a * 100 / $nbr_interventions) ."[%]";
+					echo round($nintp_a, 2) . "</br>" . round(($nintp_a * 100 / $nbr_interventions), 2) ."[%]";
 					?>
 				</td>
 				<td>
 					<?php
 					$nintp_h = ($nint_h / $tot_personne_h);
-					echo (int)$nintp_h . "</br>" . (int)($nintp_h * 100 / $nbr_interventions) ."[%]";
+					echo round($nintp_h, 2) . "</br>" . round(($nintp_h * 100 / $nbr_interventions), 2) ."[%]";
 					?>
 				</td>
 			</tr>
@@ -266,25 +270,25 @@ include("header.php");
 				<td>
 					<?php
 					$nintp_c = ($nbr_interventions_courte / $nombre_total_personnes);
-					echo (int)$nintp_c . "</br>" . (int)($nintp_c * 100 / $nbr_interventions) ."[%]";
+					echo round($nintp_c, 2) . "</br>" . round(($nintp_c * 100 / $nbr_interventions), 2) ."[%]";
 					?>
 				</td>
 				<td>
 					<?php
 					$nintp_c_f = ($nint_c_f / $tot_personne_f);
-					echo (int)$nintp_c_f . "</br>" . (int)($nintp_c_f * 100 / $nbr_interventions) ."[%]";
+					echo round($nintp_c_f, 2) . "</br>" . round(($nintp_c_f * 100 / $nbr_interventions), 2) ."[%]";
 					?>
 				</td>
 				<td>
 					<?php
 					$nintp_c_a = ($nint_c_a / $tot_personne_a);
-					echo (int)$nintp_c_a . "</br>" . (int)($nintp_c_a * 100 / $nbr_interventions) ."[%]";
+					echo round($nintp_c_a, 2) . "</br>" . round(($nintp_c_a * 100 / $nbr_interventions), 2) ."[%]";
 					?>
 				</td>
 				<td>
 					<?php
 					$nintp_c_h = ($nint_c_h / $tot_personne_h);
-					echo (int)$nintp_c_h . "</br>" . (int)($nintp_c_h * 100 / $nbr_interventions) ."[%]";
+					echo round($nintp_c_h, 2) . "</br>" . round(($nintp_c_h * 100 / $nbr_interventions), 2) ."[%]";
 					?>
 				</td>
 			</tr>
@@ -294,25 +298,25 @@ include("header.php");
 				<td>
 					<?php
 					$nintp_l = ($nbr_interventions_longue / $nombre_total_personnes);
-					echo (int)$nintp_l . "</br>" . (int)($nintp_l * 100 / $nbr_interventions) ."[%]";
+					echo round($nintp_l, 2) . "</br>" . round(($nintp_l * 100 / $nbr_interventions), 2) ."[%]";
 					?>
 				</td>
 				<td>
 					<?php
 					$nintp_l_f = ($nint_l_f / $tot_personne_f);
-					echo (int)$nintp_l_f . "</br>" . (int)($nintp_l_f * 100 / $nbr_interventions) ."[%]";
+					echo round($nintp_l_f, 2) . "</br>" . round(($nintp_l_f * 100 / $nbr_interventions), 2) ."[%]";
 					?>
 				</td>
 				<td>
 					<?php
 					$nintp_l_a = ($nint_l_a / $tot_personne_a);
-					echo (int)$nintp_l_a . "</br>" . (int)($nintp_l_a * 100 / $nbr_interventions) ."[%]";
+					echo round($nintp_l_a, 2) . "</br>" . round(($nintp_l_a * 100 / $nbr_interventions), 2) ."[%]";
 					?>
 				</td>
 				<td>
 					<?php
 					$nintp_l_h = ($nint_l_h / $tot_personne_h);
-					echo (int)$nintp_l_h . "</br>" . (int)($nintp_l_h * 100 / $nbr_interventions) ."[%]";
+					echo round($nintp_l_h, 2) . "</br>" . round(($nintp_l_h * 100 / $nbr_interventions), 2) ."[%]";
 					?>
 				</td>
 			</tr>

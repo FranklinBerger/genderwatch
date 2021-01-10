@@ -29,6 +29,7 @@ if ( isset( $_SESSION["loged"] ) AND ( $_SESSION["loged"] == TRUE ) ){
 } else {
 	// Session invalidée ou innexistante, on envoie au loggin
 	header("Location:loggin.php");
+	exit();
 }
 
 

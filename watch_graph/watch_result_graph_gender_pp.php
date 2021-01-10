@@ -54,22 +54,22 @@ $tppg_h = add_all_data_where_dataname_is_value("temps_parlé", "genre", "H", $da
 $tpmpg_h = (int)($tppg_h / $tot_personne_h);
 
 //Nombre moyen d'interventions courte par personne (par genre) = nombre d'interventiosn courte (par genre) / nombre total personnes (par genre)
-$nint_c_m = (int)($nbr_interventions_courte / $nombre_total_personnes);
+$nint_c_m = round(($nbr_interventions_courte / $nombre_total_personnes), 2);
 $totnint_c_f = add_all_data_where_dataname_is_value("parole_courte", "genre", "F", $data_watch_result);
-$nint_c_f = (int)($totnint_c_f / $tot_personne_f);
+$nint_c_f = round(($totnint_c_f / $tot_personne_f), 2);
 $totnint_c_a = add_all_data_where_dataname_is_value("parole_courte", "genre", "T", $data_watch_result);
-$nint_c_a = (int)($totnint_c_a / $tot_personne_a);
+$nint_c_a = round(($totnint_c_a / $tot_personne_a), 2);
 $totnint_c_h = add_all_data_where_dataname_is_value("parole_courte", "genre", "H", $data_watch_result);
-$nint_c_h = (int)($totnint_c_h / $tot_personne_h);
+$nint_c_h = round(($totnint_c_h / $tot_personne_h), 2);
 
 //Nombre moyen d'interventions longue par personne (par genre) = nombre d'interventiosn longue (par genre) / nombre total personnes (par genre)
-$nint_l_m = (int)($nbr_interventions_longue / $nombre_total_personnes);
+$nint_l_m = round(($nbr_interventions_longue / $nombre_total_personnes), 2);
 $totnint_l_f = add_all_data_where_dataname_is_value("parole_longue", "genre", "F", $data_watch_result);
-$nint_l_f = (int)($totnint_l_f / $tot_personne_f);
+$nint_l_f = round(($totnint_l_f / $tot_personne_f), 2);
 $totnint_l_a = add_all_data_where_dataname_is_value("parole_longue", "genre", "T", $data_watch_result);
-$nint_l_a = (int)($totnint_l_a / $tot_personne_a);
+$nint_l_a = round(($totnint_l_a / $tot_personne_a), 2);
 $totnint_l_h = add_all_data_where_dataname_is_value("parole_longue", "genre", "H", $data_watch_result);
-$nint_l_h = (int)($totnint_l_h / $tot_personne_h);
+$nint_l_h = round(($totnint_l_h / $tot_personne_h), 2);
 
 // Défintiion valleur max barre
 $val_max_tpmpg = max($tpmpg_m, $tpmpg_f, $tpmpg_a, $tpmpg_h);

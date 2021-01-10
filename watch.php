@@ -36,6 +36,7 @@ include("data_watch.php");
 			<th>Prise de parolle longue</th>
 			<th>Prise de parolle courte</th>
 			<th>Genre</th>
+			<th>Rôle</th>
 			</tr>
 		<?php
 		while ( $personne = $prep_all_personnes->fetch() ){
@@ -63,6 +64,7 @@ include("data_watch.php");
 			<td><?php echo $personne["parole_longue"]; ?></td>
 			<td><?php echo $personne["parole_courte"]; ?></td>
 			<td><?php echo $personne["genre"]; ?></td>
+			<td><?php echo $personne["role"]; ?></td>
 			</tr>
 			<?php
 		}

@@ -15,6 +15,7 @@ if ( isset( $_SESSION["current_watch"] ) ){
 	<!-- Boutons menu -->
 	<?php bouton_lien("Nouveau Watch", "new_watch.php");?>
 	<?php bouton_lien("Éditer", "list_watch_edit.php");?>
+	<?php bouton_lien("MetaGW", "meta_result.php");?>
 	<?php bouton_lien("Déconnexion", "loggout.php");?>
 	
 	</br>

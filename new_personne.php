@@ -22,6 +22,11 @@ if ( isset( $_GET["new_personne_name"] ) ){
 if ( isset( $_GET["new_personne_gender"] ) ){
 	$new_personne_gender = (string)$_GET["new_personne_gender"];
 }
+if ( isset( $_GET["new_personne_role"] ) ){
+	$new_personne_role = (string)$_GET["new_personne_role"];
+} else {
+	$new_personne_role = "";
+}
 
 if ( isset( $_GET["msg"] ) ){
 	$msg = (string)$_GET["msg"];
@@ -84,6 +89,13 @@ if ( isset( $_GET["msg"] ) ){
 			<span class="checkmark"></span>
 		</label>
 		
+		<label class="select" for="new_personne_role">Rôle:</label>
+			<select name="new_personne_role" id="new_personne_role">
+				<option value="" <?php ($new_personne_role == "") ? "selected" : NULL ?> ></option>
+				<option value="M" <?php echo ($new_personne_role == "M") ? "selected" : NULL ?> >Modération</option>
+			</select>
+		
+		</br></br>
 		<button method = "submit">Valider</button>
 	</form>
 	
