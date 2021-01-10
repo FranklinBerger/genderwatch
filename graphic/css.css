@@ -4,6 +4,15 @@ table, button, a, label, input, textarea {
     font-family: "Lucida Console";
 }
 
+.loginForm {
+    margin: auto;
+}
+
+.appBody {
+    margin: auto;
+    max-width: 500px;
+}
+
 h1 {
     text-align: center;
     font-size: 50px;
@@ -56,20 +65,29 @@ button {
 }
 
 /* Text input et textarea, asser grand et collé*/
-input[type=text], input[type=password], select {
+input[type=text], input[type=password], select, textarea {
     width: 40%;
     font-size: 16px;
-    padding: 5;
+    padding: 5px;
     border: 1px solid black;
     border-collapse: collapse;
 }
 
-textarea {
-    width: 40%;
-    font-size: 16px;
-    padding: 5;
-    border: 1px solid black;
-    border-collapse: collapse;
+input:focus, select:focus, textarea:focus {
+    border: 1px solid blue;
+}
+
+input, select, textarea {
+    border-radius: 3px;
+}
+
+button, input[type=button]{
+    margin: 1px 5px;
+    border-radius: 2px;
+}
+
+button:hover, input[type=button]:hover{
+    background-color: #bfbfbf;
 }
 
 /* ---- Bouton radio, asser grand et brut ----- */
@@ -132,10 +150,16 @@ textarea {
 
 /* Logo & entrée page index.php */
 .logo_index {
-    width: 35%;
-    right: 5%;
-    position: absolute;
-    margin: 0px;
+    max-width: 200px;
+    margin: auto;
+}
+
+.fullwidth {
+    width: 100%;
+}
+
+.flexdiv {
+    display: flex;
 }
 
 .singin_index_input[type=text], [type=password] {
