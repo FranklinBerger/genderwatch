@@ -2,7 +2,7 @@
 .idea
 
 #Db files (with credentials):
-db.php
+.const.php
 
 #Others
 perso

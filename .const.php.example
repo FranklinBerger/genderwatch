@@ -1,0 +1,7 @@
+<?php
+// This file contains the database credentials and must be excluded of the versioning system
+$dbhost = "localhost";
+$dbname = "gender_watch";
+$username = "";
+$password = "";
+?>
