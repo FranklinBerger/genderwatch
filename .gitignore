@@ -1,0 +1,8 @@
+#PhpStorm IDE files
+.idea
+
+#Db files (with credentials):
+db.php
+
+#Others
+perso
