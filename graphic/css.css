@@ -1,190 +1,196 @@
 /* Tout en Lucida Console */
 p, h1, h2, h3, h4, h5, h6,
 table, button, a, label, input, textarea {
-	font-family: "Lucida Console";
+    font-family: "Lucida Console";
 }
 
 h1 {
-	text-align: center;
-	font-size: 50px;
-	font-weight: bold;
-	text-decoration: underline;
-	padding: 0px;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    text-decoration: underline;
+    padding: 0px;
 }
 
 h2 {
-	text-align: left;
-	font-size: 35px;
-	font-weight: bold;
-	text-decoration: underline;
-	padding: 5px;
+    text-align: left;
+    font-size: 35px;
+    font-weight: bold;
+    text-decoration: underline;
+    padding: 5px;
 }
 
 h3 {
-	font-size: 25px;
+    font-size: 25px;
 }
 
 body {
-	overflow:auto;
-	padding-bottom: 7%;
+    overflow: auto;
+    padding-bottom: 7%;
 }
 
 a {
-	color: black;
-	text-decoration: none;
+    color: black;
+    text-decoration: none;
 }
 
 a:hover {
-	color: #4f4f4f;
-	text-decoration: underline;
+    color: #4f4f4f;
+    text-decoration: underline;
 }
 
 /* Form, en ligne si rien n'est fait */
 form {
-	display: inline;
+    display: inline;
 }
 
 /* Boutons cliquable, gris et un peut joli */
 button {
-	background-color: #D5D5D5;
-	border: none;
-	color: black;
-	padding: 8px;
-	text-align: center;
-	display: inline-block;
-	font-size: 16px;
+    background-color: #D5D5D5;
+    border: none;
+    color: black;
+    padding: 8px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
 }
 
 /* Text input et textarea, asser grand et collé*/
 input[type=text], input[type=password], select {
-	width: 40%;
-	font-size: 16px;
-	padding: 5;
-	border: 1px solid black;
-	border-collapse: collapse;
+    width: 40%;
+    font-size: 16px;
+    padding: 5;
+    border: 1px solid black;
+    border-collapse: collapse;
 }
 
 textarea {
-	width: 40%;
-	font-size: 16px;
-	padding: 5;
-	border: 1px solid black;
-	border-collapse: collapse;
+    width: 40%;
+    font-size: 16px;
+    padding: 5;
+    border: 1px solid black;
+    border-collapse: collapse;
 }
 
 /* ---- Bouton radio, asser grand et brut ----- */
 /* Customize the label (the container) */
 .radiobutton {
-	display: block;
-	position: relative;
-	padding-left: 5%;
-	margin-bottom: 10px;
-	cursor: pointer;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
+    display: block;
+    position: relative;
+    padding-left: 5%;
+    margin-bottom: 10px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 /* Hide the browser's default radio button */
 .radiobutton input {
-	position: absolute;
-	opacity: 0;
-	cursor: pointer;
-	height: 0;
-	width: 0;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
 }
 
 /* Create a custom radio button */
 .checkmark {
-	position: absolute;
-	top: 0;
-	left: 1.5%;
-	height: 18px;
-	width: 18px;
-	background-color: #D5D5D5;
-	border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 1.5%;
+    height: 18px;
+    width: 18px;
+    background-color: #D5D5D5;
+    border-radius: 50%;
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
 .checkmark:after {
-	content: "";
-	position: absolute;
-	display: none;
+    content: "";
+    position: absolute;
+    display: none;
 }
 
 /* Show the indicator (dot/circle) when checked */
 .radiobutton input:checked ~ .checkmark:after {
-	display: block;
+    display: block;
 }
 
 /* Style the indicator (dot/circle) */
 .radiobutton .checkmark:after {
-	top: 5px;
-	left: 5px;
-	width: 8px;
-	height: 8px;
-	border-radius: 50%;
-	background: black;
+    top: 5px;
+    left: 5px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: black;
 }
+
 /*-------------------------------------------------------*/
 
 /* Logo & entrée page index.php */
 .logo_index {
-	width: 35%;
-	right: 5%;
-	position: absolute;
-	margin: 0px;
+    width: 35%;
+    right: 5%;
+    position: absolute;
+    margin: 0px;
 }
 
 .singin_index_input[type=text], [type=password] {
-	width: 40%;
+    width: 40%;
 }
 
 /* Tableau centré, texte à gauche, aéré */
 table {
-	border-collapse: collapse;
-	position: relative;
-	left: 2.5%;
-	width: 95%;
-	text-align: left;
+    border-collapse: collapse;
+    position: relative;
+    left: 2.5%;
+    width: 95%;
+    text-align: left;
 }
+
 th {
-	border-collapse: collapse;
-	padding: 7px;
-	border: 1px solid black;
+    border-collapse: collapse;
+    padding: 7px;
+    border: 1px solid black;
 }
+
 td {
-	border-bottom: 1px solid black;
-	height: 20px;
-	padding: 7px;
+    border-bottom: 1px solid black;
+    height: 20px;
+    padding: 7px;
 }
-tr:nth-child(even){background-color: #f2f2f2;}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
 
 /* Image graphs finaux */
-.img_graph_final{
-	width: 95%;
-	height: auto;
-	position: static;
-	margin-top: 0px;
-	margin-left: 2.5%;
-	margin-right: 2.5%;
-	margin-bottom: 7%;
+.img_graph_final {
+    width: 95%;
+    height: auto;
+    position: static;
+    margin-top: 0px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-bottom: 7%;
 }
 
 /* Footer, petit discret */
 .footer {
-	color: #818181;
-	font-size: 13px;
-	font-family: "Lucida Console";
-	background-color: #E1E1E1;
-	text-align: center;
-	position: fixed;
-	left: 0px;
-	bottom: 0px;
-	width: 100%;
-	height: 7%;
-	z-index:+1;
+    color: #818181;
+    font-size: 13px;
+    font-family: "Lucida Console";
+    background-color: #E1E1E1;
+    text-align: center;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 7%;
+    z-index: +1;
 }
 
 

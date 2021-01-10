@@ -13,16 +13,19 @@ session_start();
 include("db.php");
 
 // Pour renvoyer avec les infos
-function go_back ($new_watch_name , $new_watch_description){
+function go_back($new_watch_name, $new_watch_description)
+{
 	$get = array(
-	"new_watch_name" => $new_watch_name ,
-	"new_watch_description" => $new_watch_description,
-	"msg" => "Impossible de créer le Watch"
+		"new_watch_name" => $new_watch_name,
+		"new_watch_description" => $new_watch_description,
+		"msg" => "Impossible de créer le Watch"
 	);
-	header("Location:new_watch.php?" . http_build_query($get) );
+	header("Location:new_watch.php?" . http_build_query($get));
 }
+
 // Géneration de la clé de share
-function generateRandomString($length = 10) {
+function generateRandomString($length = 10)
+{
 	$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	$charactersLength = strlen($characters);
 	$randomString = '';
@@ -34,16 +37,15 @@ function generateRandomString($length = 10) {
 
 
 // Vérification infos présentes
-if ( isset( $_POST["new_watch_name"] )
-AND isset( $_POST["new_watch_description"] )
-AND $_POST["new_watch_name"] != ""
-AND $_POST["new_watch_description"] != "" ){
+if (isset($_POST["new_watch_name"])
+	and isset($_POST["new_watch_description"])
+	and $_POST["new_watch_name"] != ""
+	and $_POST["new_watch_description"] != "") {
 	
 	$new_watch_name = htmlspecialchars((string)$_POST["new_watch_name"]);
 	$new_watch_description = htmlspecialchars((string)$_POST["new_watch_description"]);
 	
 	
-		
 	// Récupère les infos du user
 	$user_data = (string)$_COOKIE["GW_user"];
 	$db_prep_user = $database->prepare("
@@ -52,24 +54,24 @@ AND $_POST["new_watch_description"] != "" ){
 	$user_data = $db_prep_user->fetch();
 	$db_prep_user->closeCursor();
 	
-	try{
+	try {
 		// Créer l'entrée dans la table watch
 		$add_watch = $database->prepare(
-		"INSERT INTO watch 
+			"INSERT INTO watch 
 		(watch_name, watch_description, watch_date, created_by, user_access, share_key)
 		VALUES
 		(:watch_name, :watch_description, NOW(), :created_by, :user_access, :share_key)");
 		
 		//Génértion clé de partage
-		$checkQ  = $database->prepare("
+		$checkQ = $database->prepare("
 		SELECT * FROM watch WHERE share_key = ?
 		");
 		$share_key = generateRandomString();
-		$checkQ->execute(array( $share_key ));
-		while ( $checkQ->fetch() ){
+		$checkQ->execute(array($share_key));
+		while ($checkQ->fetch()) {
 			$checkQ->closeCursor();
 			$share_key = generateRandomString();
-			$checkQ->execute(array( $share_key ));
+			$checkQ->execute(array($share_key));
 		}
 		$checkQ->closeCursor();
 		
@@ -78,12 +80,12 @@ AND $_POST["new_watch_description"] != "" ){
 			"watch_name" => $new_watch_name,
 			"watch_description" => $new_watch_description,
 			"created_by" => $user_data["id"],
-			"user_access" => (string) $user_data["id"].",1," ,
+			"user_access" => (string)$user_data["id"] . ",1,",
 			"share_key" => $share_key
-			));
-			
-			// Redirection vers le menu principal
-			header("Location:list_watch.php");
+		));
+
+		// Redirection vers le menu principal
+		header("Location:list_watch.php");
 	} catch (Exception $e) {
 		go_back($_POST["new_watch_name"], $_POST["new_watch_description"]);
 	}

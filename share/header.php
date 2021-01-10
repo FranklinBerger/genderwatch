@@ -14,7 +14,9 @@ Actions:
 include("db.php");
 
 # Démare la session si c'est pas fait
-if ( ! isset( $_SESSION ) ){ session_start(); }
+if (!isset($_SESSION)) {
+   session_start();
+}
 
 
 // Divers outils html
@@ -25,7 +27,7 @@ include("html_module.php");
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="icon" href="graphic/icone.png" />
-	<title>GW - <?php echo $watch_data["name"] ?></title>
-	<link rel="stylesheet" href="graphic/css.css" />
+    <link rel="icon" href="graphic/icone.png"/>
+    <title>GW - <?php echo $watch_data["name"] ?></title>
+    <link rel="stylesheet" href="graphic/css.css"/>
 </head>
