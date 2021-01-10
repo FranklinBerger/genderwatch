@@ -30,40 +30,38 @@ include("html_module.php");
     <link rel="stylesheet" href="graphic/css.css"/>
 </head>
 <body>
+<div class="appBody loginForm">
+    <h1>Gender Watch</br>Protocole</h1>
 
-<h1>Gender Watch</br>Protocole</h1>
+    <div class="fullwidth flexdiv">
+        <img src="graphic/logo.png" class="logo_index">
+    </div>
+   <?php
+   if (isset($_GET["msg"])) {
+      echo "<p>" . $_GET["msg"] . "</p>";
+   } else {
+      echo "</br>";
+   }
+   ?>
 
-<img src="graphic/logo.png" align="middle" class="logo_index">
+    <form action="loggin.php" method="post" class="loginForm">
+        <label for="index_input_user">Nom d'utilisat·eur·rice : </label>
+        </br>
+        <input type="text" name="index_input_user"
+               class="singin_index_input"/>
+        </br>
+        </br>
+        <label for="index_input_pass">Mot de passe : </label>
+        </br>
+        <input type="password" name="index_input_pass"
+               class="singin_index_input"/>
+        </br>
+        </br>
+        <button action="submit">Valider</button>
+    </form>
+   <?php bouton_lien("Voir un Watch partagé", "share"); ?>
 
-</br>
-</br>
-</br>
-<?php
-if (isset($_GET["msg"])) {
-   echo "<p>" . $_GET["msg"] . "</p>";
-} else {
-   echo "</br>";
-}
-?>
-
-<form action="loggin.php" method="post" class="singin_index_input">
-    <label for="index_input_user">Nom d'utilisat·eur·rice : </label>
-    </br>
-    <input type="text" name="index_input_user"
-           class="singin_index_input"/>
-    </br>
-    </br>
-    <label for="index_input_pass">Mot de passe : </label>
-    </br>
-    <input type="password" name="index_input_pass"
-           class="singin_index_input"/>
-    </br>
-    </br>
-    <button action="submit">Valider</button>
-</form>
-<?php bouton_lien("Voir un Watch partagé", "share"); ?>
-
-
+</div>
 
 <?php
 include("footer.php");
