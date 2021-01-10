@@ -40,10 +40,11 @@ if (isset($_GET["msg"])) {
 <form method="post" action="init_new_watch.php">
     <label for="new_watch_name">Nom:</label></br>
     <input type="text" name="new_watch_name"
-           value='<?php echo $new_watch_name ?>'/>
+           value='<?php echo $new_watch_name ?>' required autofocus/>
     </br></br>
     <label for="new_watch_description">Description:</label></br>
     <textarea name="new_watch_description" rows="10"
+              required placeholder="Requis"
     ><?php echo $new_watch_description ?></textarea>
     </br>
     <button method="submit">Valider</button>
