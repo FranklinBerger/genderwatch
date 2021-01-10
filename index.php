@@ -38,7 +38,7 @@ include("html_module.php");
     </div>
    <?php
    if (isset($_GET["msg"])) {
-      echo "<p>" . $_GET["msg"] . "</p>";
+      echo "<p>" . htmlentities($_GET["msg"]) . "</p>";
    } else {
       echo "</br>";
    }
@@ -48,19 +48,18 @@ include("html_module.php");
         <label for="index_input_user">Nom d'utilisat·eur·rice : </label>
         </br>
         <input type="text" name="index_input_user"
-               class="singin_index_input"/>
+               class="singin_index_input fullwidth"/>
         </br>
         </br>
         <label for="index_input_pass">Mot de passe : </label>
         </br>
         <input type="password" name="index_input_pass"
-               class="singin_index_input"/>
+               class="singin_index_input fullwidth"/>
         </br>
         </br>
-        <button action="submit">Valider</button>
+        <button>Connexion</button>
     </form>
    <?php bouton_lien("Voir un Watch partagé", "share"); ?>
-
 </div>
 
 <?php

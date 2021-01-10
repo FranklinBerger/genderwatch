@@ -66,7 +66,6 @@ button {
 
 /* Text input et textarea, asser grand et collé*/
 input[type=text], input[type=password], select, textarea {
-    width: 40%;
     font-size: 16px;
     padding: 5px;
     border: 1px solid black;
@@ -163,7 +162,6 @@ button:hover, input[type=button]:hover{
 }
 
 .singin_index_input[type=text], [type=password] {
-    width: 40%;
 }
 
 /* Tableau centré, texte à gauche, aéré */
