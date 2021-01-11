@@ -21,5 +21,5 @@ permet d'avoir une vue totale sur le système (pensez à modifier le nom d'utili
 SQL directement ou P.Ex: [PHPMyAdmin](https://www.phpmyadmin.net/)).
 
 ## Développement
-Lancement du projet et développement initial: Franklin•e Berger [@franklinfrankline](https://github.com/FranklinBerger)
-Reprise du projet, mise aux normes et développement: Samuel Roland [@samuelroland](https://github.com/samuelroland)
+* Lancement du projet et développement initial: Franklin•e Berger [@franklinfrankline](https://github.com/FranklinBerger)
+* Reprise du projet, mise aux normes et développement: Samuel Roland [@samuelroland](https://github.com/samuelroland)
