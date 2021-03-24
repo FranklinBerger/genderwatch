@@ -23,3 +23,6 @@ SQL directement ou P.Ex: [PHPMyAdmin](https://www.phpmyadmin.net/)).
 ## Développement
 * Lancement du projet et développement initial: Franklin•e Berger [@franklinfrankline](https://github.com/FranklinBerger)
 * Reprise du projet, mise aux normes et développement: Samuel Roland [@samuelroland](https://github.com/samuelroland)
+
+## Copyright
+Programme sous license GPL V3 ou ultérieure. Voir https://www.gnu.org/licenses/
